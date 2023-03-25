@@ -1,0 +1,38 @@
+# This workflow will check for Maven projects if the licenses of all (transitive) dependencies are vetted.
+
+name: License vetting status check
+
+on:
+  push:
+    branches: 
+      - 'master'
+  pull_request:
+    branches: 
+     - 'master'
+  issue_comment:
+    types: [created]
+
+jobs:
+  call-license-check:
+    uses: eclipse/dash-licenses/.github/workflows/mavenLicenseCheck.yml@master
+    with:
+      projectId: technology.m2e
+    secrets:
+      gitlabAPIToken: ${{ secrets.M2E_GITLAB_API_TOKEN }}
+
+  dump-context:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dump GitHub context
+      id: github_context_step
+      run: echo '${{ toJSON(github) }}'
+    - name: Dump job context
+      run: echo '${{ toJSON(job) }}'
+    - name: Dump steps context
+      run: echo '${{ toJSON(steps) }}'
+    - name: Dump runner context
+      run: echo '${{ toJSON(runner) }}'
+    - name: Dump strategy context
+      run: echo '${{ toJSON(strategy) }}'
+    - name: Dump matrix context
+      run: echo '${{ toJSON(matrix) }}'
