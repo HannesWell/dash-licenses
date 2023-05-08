@@ -14,6 +14,20 @@ on:
 
 jobs:
   call-license-check:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: write
+      discussions: write
+      packages: write
+      pages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     uses: HannesWell/dash-licenses/.github/workflows/mavenLicenseCheck.yml@master
     with:
       projectId: technology.m2e

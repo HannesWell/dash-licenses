@@ -39,6 +39,21 @@ on:
         description: 'The authentication token (scope: api) from gitlab.eclipse.org of the calling repository. Only required if license vetting is requested'
         required: false
 
+permissions:
+  actions: write
+  checks: write
+  contents: write
+  deployments: write
+  id-token: write
+  issues: write
+  discussions: write
+  packages: write
+  pages: write
+  pull-requests: write
+  repository-projects: write
+  security-events: write
+  statuses: write
+
 jobs:
   check-licenses:
     if: github.event_name != 'issue_comment' || ( github.event.issue.pull_request != '' && (github.event.comment.body == '/request-license-review') )
