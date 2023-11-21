@@ -32,6 +32,7 @@ runs:
         if [[ ${{ inputs.project-id }} != "" ]]; then
           mvnArgs+=" -Ddash.projectId=${{ inputs.project-id }}"
         fi
+        echo "The token is: ${#GITLAB_API_TOKEN}"
         if [ ${{ inputs.request-review }} ]; then
           mvn ${mvnArgs} -Ddash.iplab.token=$GITLAB_API_TOKEN
           if [[ $? == 0 ]]; then # All licenses are vetted
