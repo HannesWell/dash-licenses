@@ -10,6 +10,7 @@
 # *************************************************************************
 
 # This workflow will check for Maven projects if the licenses of all (transitive) dependencies are vetted.
+#Dummy change
 
 name: License vetting status check
 
